@@ -4,7 +4,7 @@ import datetime
 import os
 
 # --- CONFIGURATION ---
-FEATURE_PATH = "data/processed/final_features.csv"
+FEATURE_PATH = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/main/data/processed/final_features.csv"
 MODEL_PATH = "models"
 PREDICTION_OUTPUT = "data/predictions/predicted_aqi.csv"
 
