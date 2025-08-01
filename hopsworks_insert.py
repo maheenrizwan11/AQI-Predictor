@@ -35,7 +35,7 @@ def upload_features():
     # Define Feature Group
     feature_group = fs.get_or_create_feature_group(
         name="karachi_aqi_features",
-        version=3,
+        version=4,
         primary_key=["record_id"],
         description="Engineered AQI features for Karachi",
         online_enabled=True
