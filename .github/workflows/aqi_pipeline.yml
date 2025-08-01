@@ -30,3 +30,14 @@ jobs:
 
     - name: Predict AQI
       run: python prediction.py
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "maheenrizwan11"
+        git config --global user.email "maheenrizwan10@gmail.com"
+
+    - name: Commit CSV changes
+      run: |
+        git add data/processed/features.csv data/processed/final_features.csv data/predictions/predicted_aqi.csv 
+        git commit -m "Auto-update CSVs with latest predictions"
+        git push
