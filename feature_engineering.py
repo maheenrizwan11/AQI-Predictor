@@ -260,8 +260,8 @@ def compare_aqi_accuracy(df):
     return best_method
 
 if __name__ == "__main__":
-    url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/main/data/processed/features.csv"
-    df = pd.read_csv("data/processed/features.csv", parse_dates=["datetime"])
+    url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/processed/features.csv"
+    df = pd.read_csv(url, parse_dates=["datetime"])
     df = add_features(df)
     
     # Compare accuracy

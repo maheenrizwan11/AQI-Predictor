@@ -13,7 +13,7 @@ def upload_features():
     fs = project.get_feature_store()
 
     # Load final engineered data
-    url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/main/data/processed/final_features.csv"
+    url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/processed/final_features.csv"
     df = pd.read_csv(url)
     df["datetime"] = pd.to_datetime(df["datetime"])
 

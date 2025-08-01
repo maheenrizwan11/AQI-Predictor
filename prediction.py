@@ -4,7 +4,7 @@ import datetime
 import os
 
 # --- CONFIGURATION ---
-FEATURE_PATH = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/main/data/processed/final_features.csv"
+url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/processed/final_features.csv"
 MODEL_PATH = "models"
 PREDICTION_OUTPUT = "data/predictions/predicted_aqi.csv"
 
@@ -12,7 +12,7 @@ PREDICTION_OUTPUT = "data/predictions/predicted_aqi.csv"
 os.makedirs(os.path.dirname(PREDICTION_OUTPUT), exist_ok=True)
 
 # --- Step 1: Load Latest Feature Data ---
-df = pd.read_csv(FEATURE_PATH, parse_dates=["datetime"])
+df = pd.read_csv(url, parse_dates=["datetime"])
 latest = df.sort_values("datetime").iloc[-1:]
 
 features = [
