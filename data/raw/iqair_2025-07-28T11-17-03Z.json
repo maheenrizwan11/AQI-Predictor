@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "data": {
+    "city": "Karachi",
+    "state": "Sindh",
+    "country": "Pakistan",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        67.05294147133827,
+        24.818095393631435
+      ]
+    },
+    "current": {
+      "pollution": {
+        "ts": "2025-07-28T11:00:00.000Z",
+        "aqius": 66,
+        "mainus": "p2",
+        "aqicn": 24,
+        "maincn": "p2"
+      },
+      "weather": {
+        "ts": "2025-07-28T11:00:00.000Z",
+        "ic": "04d",
+        "hu": 77,
+        "pr": 997,
+        "tp": 29,
+        "wd": 252,
+        "ws": 9.52
+      }
+    }
+  }
+}
