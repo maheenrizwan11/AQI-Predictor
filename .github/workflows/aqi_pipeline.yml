@@ -1,0 +1,32 @@
+name: Daily AQI Pipeline
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # runs daily at 5 AM UTC
+  workflow_dispatch:     # manual trigger from GitHub UI
+
+jobs:
+  aqi-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Build features
+      run: python build_features.py
+
+    - name: Engineer features
+      run: python feature_engineering.py
+
+    - name: Predict AQI
+      run: python prediction.py
