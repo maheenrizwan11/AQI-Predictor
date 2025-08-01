@@ -33,7 +33,7 @@ pred_t48 = model_t48.predict(X)[0]
 pred_t72 = model_t72.predict(X)[0]
 
 # --- Step 4: Save to File ---
-today = datetime.datetime.now().now()
+today = datetime.datetime.now().date()
 preds = {
     "date": today.isoformat(),
     "predicted_aqi_t+24": round(pred_t24, 2),
