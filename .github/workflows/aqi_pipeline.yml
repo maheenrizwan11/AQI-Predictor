@@ -35,6 +35,7 @@ jobs:
       run: |
         git config --global user.name "maheenrizwan11"
         git config --global user.email "maheenrizwan10@gmail.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
     - name: Commit CSV changes
       run: |
