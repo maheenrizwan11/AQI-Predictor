@@ -8,7 +8,7 @@ url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads
 MODEL_PATH = "models"
 PREDICTION_OUTPUT = "data/predictions/predicted_aqi.csv"
 
-# Make sure output directory exists
+# Ensure the output directory exists
 os.makedirs(os.path.dirname(PREDICTION_OUTPUT), exist_ok=True)
 
 # --- Step 1: Load Latest Feature Data ---
@@ -32,14 +32,16 @@ pred_t24 = model_t24.predict(X)[0]
 pred_t48 = model_t48.predict(X)[0]
 pred_t72 = model_t72.predict(X)[0]
 
-# --- Step 4: Save to File ---
+# --- Step 4: Save Prediction as Single Row ---
 today = datetime.datetime.now().date()
 preds = {
     "date": today.isoformat(),
+   # "data_timestamp": latest["datetime"].values[0],
     "predicted_aqi_t+24": round(pred_t24, 2),
     "predicted_aqi_t+48": round(pred_t48, 2),
     "predicted_aqi_t+72": round(pred_t72, 2)
 }
 
+# Always overwrite the file with a single updated prediction
 pd.DataFrame([preds]).to_csv(PREDICTION_OUTPUT, index=False)
-print("✅ Saved predictions to", PREDICTION_OUTPUT)
+print("✅ Saved latest prediction to", PREDICTION_OUTPUT)
