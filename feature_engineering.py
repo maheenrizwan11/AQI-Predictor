@@ -132,6 +132,8 @@ def add_features(df):
             df.loc[i, "computed_aqi"] = sub_indices[main_pollutant]
             df.loc[i, "main_pollutant_calc"] = main_pollutant
 
+    df["aqi_change_rate"] = df["computed_aqi"].pct_change()
+
     # Target variables for next 3 days
     df["computed_aqi_t+24"] = df["computed_aqi"].shift(-24)
     df["computed_aqi_t+48"] = df["computed_aqi"].shift(-48)

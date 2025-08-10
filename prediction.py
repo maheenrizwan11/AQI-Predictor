@@ -17,7 +17,7 @@ latest = df.sort_values("datetime").iloc[-1:]
 
 features = [
     'pm2_5', 'pm10', 'o3', 'no2', 'co', 'so2',
-    'pressure', 'wind_speed', 'temp', 
+    'pressure', 'wind_speed', 'temp', 'aqi_change_rate'
     'humidity', 'wind_direction'
 ]
 X = latest[features]
