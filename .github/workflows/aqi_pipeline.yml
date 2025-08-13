@@ -32,11 +32,11 @@ jobs:
       run: python prediction.py
 
     - name: Upload features to Hopsworks
-      run: python hopswork_insert.py
       env:
         HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
         HOPSWORKS_PROJECT: ${{ secrets.HOPSWORKS_PROJECT }}
-              
+      run: python hopsworks_insert.py
+
     - name: Configure Git
       run: |
         git config --global user.name "maheenrizwan11"
