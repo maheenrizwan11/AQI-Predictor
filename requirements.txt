@@ -11,4 +11,5 @@ hsfs
 streamlit
 xgboost
 joblib
+confluent-kafka
 
