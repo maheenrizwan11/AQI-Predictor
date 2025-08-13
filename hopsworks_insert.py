@@ -52,13 +52,13 @@
 import hopsworks
 import os
 import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def upload_features():
     api_key = os.getenv("HOPSWORKS_API_KEY")
     project_name = os.getenv("HOPSWORKS_PROJECT")
-
-    if not api_key or not project_name:
-        raise ValueError("Missing HOPSWORKS_API_KEY or HOPSWORKS_PROJECT environment variables")
 
     project = hopsworks.login(api_key_value=api_key, project=project_name)
     fs = project.get_feature_store()
