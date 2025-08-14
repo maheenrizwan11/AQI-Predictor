@@ -72,7 +72,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 # Load data
-df = pd.read_csv("data/processed/final_features.csv", parse_dates=["datetime"])
+url = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/processed/final_features.csv"
+df = pd.read_csv(url, parse_dates=["datetime"])
 
 # Features to use
 features = [

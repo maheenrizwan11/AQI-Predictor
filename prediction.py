@@ -24,7 +24,7 @@ X = latest[features]
 
 # --- Step 2: Load Trained Models ---
 model_t24 = joblib.load(os.path.join(MODEL_PATH, "RandomForest_t+24.pkl"))
-model_t48 = joblib.load(os.path.join(MODEL_PATH, "RandomForest_t+48.pkl"))
+model_t48 = joblib.load(os.path.join(MODEL_PATH, "XGBoost_t+48.pkl"))
 model_t72 = joblib.load(os.path.join(MODEL_PATH, "XGBoost_t+72.pkl"))
 
 # --- Step 3: Make Predictions ---
