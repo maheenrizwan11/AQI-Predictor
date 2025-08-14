@@ -41,7 +41,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 
 # Load keys (absolute path to .env)
-PROJECT_ROOT = "/mnt/c/users/dell/aqi_predictor1"  
+PROJECT_ROOT = "/mnt/c/users/dell/aqi_predictor1"  # Update this!
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))  
 
 IQ_AIR = os.getenv("IQAIR_API_KEY")
@@ -65,7 +65,7 @@ def fetch_openweather():
 
 def save_json(data, prefix):
     now = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")
-    raw_dir = os.path.join("data", "raw")  
+    raw_dir = os.path.join(PROJECT_ROOT, "data", "raw")  
     os.makedirs(raw_dir, exist_ok=True)
     filename = os.path.join(raw_dir, f"{prefix}_{now}.json")  
     with open(filename, "w") as f:
