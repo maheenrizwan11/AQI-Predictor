@@ -23,6 +23,9 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run fetch_data.py
+      env:
+        IQAIR_API_KEY: ${{ secrets.IQAIR_API_KEY }}
+        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}  
       run: python fetch_data.py
 
     - name: Configure Git

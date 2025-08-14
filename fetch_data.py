@@ -41,8 +41,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 
 # Load keys (absolute path to .env)
-PROJECT_ROOT = "/mnt/c/users/dell/aqi_predictor"  # Update this!
-load_dotenv(os.path.join(PROJECT_ROOT, ".env"))  # Fix: Specify .env path
+PROJECT_ROOT = "/mnt/c/users/dell/aqi_predictor1"  
+load_dotenv(os.path.join(PROJECT_ROOT, ".env"))  
 
 IQ_AIR = os.getenv("IQAIR_API_KEY")
 # AQICN_TOKEN = os.getenv("AQICN_API_TOKEN")
