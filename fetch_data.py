@@ -65,7 +65,7 @@ def fetch_openweather():
 
 def save_json(data, prefix):
     now = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")
-    raw_dir = os.path.join(PROJECT_ROOT, "data", "raw")  
+    raw_dir = os.path.join("data", "raw")  
     os.makedirs(raw_dir, exist_ok=True)
     filename = os.path.join(raw_dir, f"{prefix}_{now}.json")  
     with open(filename, "w") as f:
