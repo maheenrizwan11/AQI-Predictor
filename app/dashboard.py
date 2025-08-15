@@ -4,7 +4,7 @@ import datetime
 
 # --- CONFIG ---
 PREDICTION_FILE = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/predictions/predicted_aqi.csv"
-FINAL_FEATURES_FILE = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/processed/features.csv"
+FEATURES_FILE = "https://raw.githubusercontent.com/maheenrizwan11/AQI-Predictor/refs/heads/main/data/processed/features.csv"
 
 # AQI category mapping (EPA standard)
 AQI_CATEGORIES = [
@@ -40,7 +40,7 @@ if pred_df.empty:
 
 # --- LOAD TODAY'S ACTUAL AQI ---
 try:
-    features_df = pd.read_csv(FINAL_FEATURES_FILE, parse_dates=["datetime"])
+    features_df = pd.read_csv(FEATURES_FILE, parse_dates=["datetime"])
     today_date = datetime.date.today()
     today_data = features_df[features_df["datetime"].dt.date == today_date]
     if not today_data.empty:
@@ -57,13 +57,9 @@ pred = pred_df.iloc[-1]
 # --- DISPLAY 4 COLUMNS (Today + 3 Future Days) ---
 cols = st.columns(4)
 
-# Generate dates for today + t+24, t+48, t+72
-dates = [
-    datetime.date.today(),
-    datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=1),
-    datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=2),
-    datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=3)
-]
+# Always base on today
+base_date = datetime.date.today()
+dates = [base_date + datetime.timedelta(days=i) for i in range(4)]
 
 aqi_values = [
     today_aqi,
@@ -71,6 +67,21 @@ aqi_values = [
     pred["predicted_aqi_t+48"],
     pred["predicted_aqi_t+72"]
 ]
+
+# # Generate dates for today + t+24, t+48, t+72
+# dates = [
+#     datetime.date.today(),
+#     datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=1),
+#     datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=2),
+#     datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=3)
+# ]
+
+# aqi_values = [
+#     today_aqi,
+#     pred["predicted_aqi_t+24"],
+#     pred["predicted_aqi_t+48"],
+#     pred["predicted_aqi_t+72"]
+# ]
 
 # --- DISPLAY WITH CUSTOM STYLE ---
 for i, col in enumerate(cols):
