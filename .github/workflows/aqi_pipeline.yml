@@ -28,6 +28,9 @@ jobs:
     - name: Engineer features
       run: python feature_engineering.py
 
+    - name: Train Models
+      run: python training.py 
+        
     - name: Predict AQI
       run: python prediction.py
 

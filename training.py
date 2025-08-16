@@ -15,8 +15,8 @@ df = pd.read_csv(url, parse_dates=["datetime"])
 # Features to use
 features = [
     'pm2_5', 'pm10', 'o3', 'no2', 'co', 'so2',
-    'pressure', 'wind_speed', 'aqi_change_rate',
-    'temp', 'humidity', 'wind_direction'
+    'pressure', 'wind_speed', 'temp', 'aqi_change_rate',
+    'humidity', 'wind_direction'
 ]
 
 # Targets
@@ -34,18 +34,13 @@ models = {
     "GradientBoost": GradientBoostingRegressor()
 }
 
-# Fit scaler on full dataset
-scaler = StandardScaler()
-X_all = df[features]
-X_scaled_all = scaler.fit_transform(X_all)
-
 
 for horizon, target_col in targets.items():
     print(f"\nTraining model for AQI {horizon} ahead (target: {target_col})")
 
     y = df[target_col]
     X_train, X_test, y_train, y_test = train_test_split(
-        X_scaled_all, y, test_size=0.2, random_state=42
+        df[features], y, test_size=0.2, random_state=42
     )
 
     best_model = None
@@ -74,7 +69,6 @@ for horizon, target_col in targets.items():
 
     # Example prediction using latest row
     latest_row = df[features].iloc[-1:]
-    latest_scaled = scaler.transform(latest_row)
-    pred_value = best_model.predict(latest_scaled)[0]
+    pred_value = best_model.predict(latest_row)[0]
     print(f"🔮 Predicted AQI for {horizon}: {pred_value:.2f}")
 
