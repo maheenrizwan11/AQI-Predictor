@@ -68,21 +68,6 @@ aqi_values = [
     pred["predicted_aqi_t+72"]
 ]
 
-# # Generate dates for today + t+24, t+48, t+72
-# dates = [
-#     datetime.date.today(),
-#     datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=1),
-#     datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=2),
-#     datetime.date.fromisoformat(pred["date"]) + datetime.timedelta(days=3)
-# ]
-
-# aqi_values = [
-#     today_aqi,
-#     pred["predicted_aqi_t+24"],
-#     pred["predicted_aqi_t+48"],
-#     pred["predicted_aqi_t+72"]
-# ]
-
 # --- DISPLAY WITH CUSTOM STYLE ---
 for i, col in enumerate(cols):
     day_name = dates[i].strftime("%A")
