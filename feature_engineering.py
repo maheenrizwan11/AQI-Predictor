@@ -133,7 +133,9 @@ def add_features(df):
         mae = np.mean(np.abs(valid_rows["aqi_us"] - valid_rows["computed_aqi"]))
         print(f"📏 Mean Absolute Error (aqi_us vs computed_aqi): {mae:.2f}")
 
-    df = df.dropna().reset_index(drop=True)
+    # Only drop rows where core pollutant values or computed_aqi are missing
+    essential = ["computed_aqi", "pm2_5", "pm10", "o3", "no2", "so2", "co"]
+    df = df.dropna(subset=essential).reset_index(drop=True)
     return df
 
 if __name__ == "__main__":
