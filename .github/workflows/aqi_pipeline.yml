@@ -48,6 +48,6 @@ jobs:
 
     - name: Commit CSV changes
       run: |
-        git add data/processed/features.csv data/processed/final_features.csv data/predictions/predicted_aqi.csv 
-        git commit -m "Auto-update CSVs with latest predictions"
+        git add data/processed/features.csv data/processed/final_features.csv data/predictions/predicted_aqi.csv models/*.pkl
+        git commit -m "Auto-update CSVs with latest predictions and updated models"
         git push
